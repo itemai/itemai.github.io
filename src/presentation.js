@@ -7,6 +7,10 @@ export function initializePresentation(){
   const languageMenu=document.getElementById('languageMenu');
   const languageCurrent=document.getElementById('languageCurrent');
   const languageOptions=[...document.querySelectorAll('.language-option')];
+  const siteActions=document.querySelector('.site-actions');
+  const primaryNav=document.getElementById('primaryNav');
+  const navMenuButton=document.getElementById('navMenuButton');
+  const navMenuText=document.getElementById('navMenuText');
   const normalizeI18nText=value=>value.replace(/\s+/g,' ').trim();
   const textBindings=[];
   const textWalker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT,{acceptNode(node){
@@ -43,6 +47,7 @@ export function initializePresentation(){
       if(button) button.setAttribute('aria-label',localeUI[currentLanguage].nextPage);
     });
     syncThemeUI();
+    syncNavigationUI();
   };
   const themeToggle=document.getElementById('themeToggle');
   const themeIcon=document.getElementById('themeIcon');
@@ -54,6 +59,14 @@ export function initializePresentation(){
     const ui=localeUI[currentLanguage];
     themeText.textContent=dark?ui.dark:ui.light;
     themeToggle.setAttribute('aria-label',dark?ui.toLight:ui.toDark);
+  };
+  const syncNavigationUI=()=>{
+    if(!primaryNav||!navMenuButton||!navMenuText) return;
+    const open=primaryNav.classList.contains('is-open');
+    const ui=localeUI[currentLanguage];
+    navMenuText.textContent=ui.menu;
+    navMenuButton.setAttribute('aria-expanded',String(open));
+    navMenuButton.setAttribute('aria-label',open?ui.closeNavigation:ui.openNavigation);
   };
   applyLanguage(currentLanguage);
   const setLanguageMenu=(open,focusSelected=false)=>{
@@ -94,6 +107,22 @@ export function initializePresentation(){
   });
   document.addEventListener('click',event=>{
     if(!languagePicker.contains(event.target)) setLanguageMenu(false);
+  });
+  const setNavigationMenu=open=>{
+    if(!primaryNav) return;
+    primaryNav.classList.toggle('is-open',open);
+    syncNavigationUI();
+  };
+  navMenuButton?.addEventListener('click',()=>setNavigationMenu(!primaryNav.classList.contains('is-open')));
+  primaryNav?.querySelectorAll('a').forEach(link=>link.addEventListener('click',()=>setNavigationMenu(false)));
+  document.addEventListener('click',event=>{
+    if(siteActions&&!siteActions.contains(event.target)) setNavigationMenu(false);
+  });
+  document.addEventListener('keydown',event=>{
+    if(event.key==='Escape'&&primaryNav?.classList.contains('is-open')){
+      setNavigationMenu(false);
+      navMenuButton?.focus();
+    }
   });
   themeToggle.addEventListener('click',()=>{
     const dark=root.dataset.theme==='dark';

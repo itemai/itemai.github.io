@@ -1,8 +1,8 @@
 export const languageNames={en:'English',zh:'中文',ja:'日本語'};
 export const localeUI={
-    en:{language:'Language',selectLanguage:'Select language',light:'Light',dark:'Dark',toLight:'Switch to light theme',toDark:'Switch to dark theme',next:'Next',nextPage:'Next page'},
-    zh:{language:'语言',selectLanguage:'选择语言',light:'浅色',dark:'深色',toLight:'切换为浅色模式',toDark:'切换为深色模式',next:'下一页',nextPage:'前往下一页'},
-    ja:{language:'言語',selectLanguage:'言語を選択',light:'ライト',dark:'ダーク',toLight:'ライトモードに切り替え',toDark:'ダークモードに切り替え',next:'次へ',nextPage:'次のページへ'}
+    en:{language:'Language',selectLanguage:'Select language',light:'Light',dark:'Dark',toLight:'Switch to light theme',toDark:'Switch to dark theme',menu:'Menu',openNavigation:'Open navigation',closeNavigation:'Close navigation',next:'Next',nextPage:'Next page'},
+    zh:{language:'语言',selectLanguage:'选择语言',light:'浅色',dark:'深色',toLight:'切换为浅色模式',toDark:'切换为深色模式',menu:'菜单',openNavigation:'打开导航',closeNavigation:'关闭导航',next:'下一页',nextPage:'前往下一页'},
+    ja:{language:'言語',selectLanguage:'言語を選択',light:'ライト',dark:'ダーク',toLight:'ライトモードに切り替え',toDark:'ダークモードに切り替え',menu:'メニュー',openNavigation:'ナビゲーションを開く',closeNavigation:'ナビゲーションを閉じる',next:'次へ',nextPage:'次のページへ'}
   };
 export const translations={
     zh:{

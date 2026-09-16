@@ -14,7 +14,14 @@
       </div>
     </div>
   </div>
-  <div style="display:flex;align-items:center;gap:16px"><nav class="nav">
+  <div class="site-actions">
+    <button class="nav-menu-trigger" id="navMenuButton" type="button" aria-expanded="false" aria-controls="primaryNav" aria-label="Open navigation">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"></path></svg>
+      <span id="navMenuText">Menu</span>
+    </button>
+    <nav class="nav" id="primaryNav">
     <a href="#hero">Home</a><a href="#pain">Pain Points</a><a href="#architecture">Architecture</a><a href="#stack">Ecosystem</a><a href="#ontology">Ontology</a><a href="#marketplace">AI Marketplace</a><a href="#factory">Agent Factory</a><a href="#itemgpt">ItemGPT</a><a href="#enablement">Training</a>
-  </nav><button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch theme"><span class="theme-icon" id="themeIcon">☀</span><span class="theme-text" id="themeText">Light</span></button></div>
+    </nav>
+    <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch theme"><span class="theme-icon" id="themeIcon">☀</span><span class="theme-text" id="themeText">Light</span></button>
+  </div>
 </header>
